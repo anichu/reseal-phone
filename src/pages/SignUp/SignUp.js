@@ -1,23 +1,88 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContetxt/AuthProvider";
+import useToken from "../../hooks/useToken";
+import Alert from "../Shared/Alert/Alert";
 
 const SignUp = () => {
+	const { createUser, updateUserProfile } = useContext(AuthContext);
+	const [emailToken, setEmailtoken] = useState("");
+	const [token] = useToken(emailToken);
+	const navigate = useNavigate();
+	const [error, setError] = useState("");
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
+
+	if (token) {
+		navigate("/");
+	}
+
 	const onSubmit = (data) => {
 		const { email, password, username, role } = data;
+		createUser(email, password)
+			.then((result) => {
+				const user = result.user;
+				const email = user.email;
+				// update user profile name
+				handleUpdateUserProfile(username);
+				// create user in mongodb
+				fetch("http://localhost:5000/users", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify({
+						email,
+						role,
+						name: username,
+					}),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
+						if (data.acknowledged) {
+							setEmailtoken(email);
+							toast.success("user created");
+						}
+						setError("");
+					})
+					.catch((err) => {
+						setError(err.message);
+					});
+
+				setError("");
+			})
+			.catch((err) => {
+				setError(err.message);
+				console.log(err);
+			});
 	};
-	console.log(errors);
+
+	const handleUpdateUserProfile = (name) => {
+		const profile = {
+			displayName: name,
+		};
+
+		updateUserProfile(profile)
+			.then(() => {})
+			.catch((error) => {
+				setError(error.message);
+				console.error(error);
+			});
+	};
+	// console.log(errors);
 	return (
 		<div>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
 				className="w-[50%] mx-auto border shadow-2xl rounded-2xl p-5 mt-5"
 			>
+				{error && <Alert message={error}></Alert>}
 				<h1 className="text-center text-5xl my-5 text-primary">SignUp</h1>
 
 				{/* username */}

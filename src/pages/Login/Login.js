@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Alert from "../Shared/Alert/Alert";
 
 const Login = () => {
 	const {
@@ -19,6 +20,7 @@ const Login = () => {
 				onSubmit={handleSubmit(onSubmit)}
 				className="w-[50%] mx-auto border shadow-2xl rounded-2xl p-5 mt-5"
 			>
+				<Alert message="this is message"></Alert>
 				<h1 className="text-center text-5xl my-5 text-primary">Login</h1>
 				<div className="w-3/4 mx-auto">
 					<input
