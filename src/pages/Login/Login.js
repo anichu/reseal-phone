@@ -32,6 +32,16 @@ const Login = () => {
 				const user = result.user;
 				console.log(user);
 				toast.success("user login");
+				fetch(`http://localhost:5000/user?email=${user.email}`)
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
+						localStorage.setItem("resale-user-role", data.role);
+					})
+					.catch((err) => {
+						console.log(err);
+						setError(err.message);
+					});
 				setLoginEmail(data.email);
 			})
 			.catch((error) => {

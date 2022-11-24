@@ -47,6 +47,7 @@ const SignUp = () => {
 						console.log(data);
 						if (data.acknowledged) {
 							setEmailtoken(email);
+							localStorage.setItem("resale-user-role", role);
 							toast.success("user created");
 						}
 						setError("");
