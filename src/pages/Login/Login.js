@@ -1,26 +1,55 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContetxt/AuthProvider";
+import useToken from "../../hooks/useToken";
 import Alert from "../Shared/Alert/Alert";
 
 const Login = () => {
+	const location = useLocation();
+	const navigate = useNavigate();
+	const [loginEmail, setLoginEmail] = useState("");
+	const [error, setError] = useState("");
+	const [token] = useToken(loginEmail);
+
+	const from = location?.state?.from?.pathname || "/";
+	if (token) {
+		navigate(from, { replace: true });
+	}
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
+	const { signIn } = useContext(AuthContext);
+
 	const onSubmit = (data) => {
 		const { email, password } = data;
-		console.log(email, password);
+		// signin with emaill and password
+		signIn(email, password)
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				toast.success("user login");
+				setLoginEmail(data.email);
+			})
+			.catch((error) => {
+				console.log(error.message);
+				setError(error.message);
+			});
+
+		// console.log(email, password);
 	};
-	console.log(errors);
+	// console.log(errors);
 	return (
 		<div>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
 				className="w-[50%] mx-auto border shadow-2xl rounded-2xl p-5 mt-5"
 			>
-				<Alert message="this is message"></Alert>
+				{error && <Alert message={error}></Alert>}
+
 				<h1 className="text-center text-5xl my-5 text-primary">Login</h1>
 				<div className="w-3/4 mx-auto">
 					<input
