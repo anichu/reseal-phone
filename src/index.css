@@ -14,3 +14,16 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
+
+/* dash header customize design */
+.tab {
+	font-weight: 600;
+	color: black;
+	margin: 0px 5px;
+	border: 1px solid blueviolet;
+	border-radius: 5px;
+}
+.tab:hover {
+	background-color: #570df8;
+	color: white;
+}
