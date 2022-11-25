@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthContetxt/AuthProvider";
+import useRole from "../../../hooks/useRole";
 
 const Navbar = () => {
+	const { user, logOut } = useContext(AuthContext);
+	const [role] = useRole(user?.email);
 	const menuItems = (
 		<>
 			<li>
@@ -10,11 +15,33 @@ const Navbar = () => {
 			<li>
 				<Link to="/">Blog</Link>
 			</li>
-			<li>
-				<Link to="/dashboard/allbuyers">Dashboard</Link>
-			</li>
+			{user?.uid && (
+				<li>
+					<Link
+						to={`/dashboard/${
+							role === "buyer"
+								? "myorders"
+								: role === "seller"
+								? "myproducts"
+								: "allbuyers"
+						}`}
+					>
+						Dashboard
+					</Link>
+				</li>
+			)}
 		</>
 	);
+	const logOutHandler = () => {
+		logOut()
+			.then(() => {
+				toast.success("user logout");
+			})
+			.catch((err) => {
+				toast.error(err.message);
+				console.log(err);
+			});
+	};
 	return (
 		<div className="navbar text-white bg-indigo-800">
 			<div className="">
@@ -42,14 +69,26 @@ const Navbar = () => {
 						{menuItems}
 					</ul>
 				</div>
-				<a className="btn btn-ghost normal-case text-xl">ResealPhone</a>
+				<Link to="/" className="btn btn-ghost normal-case text-xl">
+					ResealPhone
+				</Link>
 			</div>
 			<div className="navbar-start w-full hidden lg:flex">
 				<ul className="menu menu-horizontal p-0">{menuItems}</ul>
 			</div>
-			<div className="navbar-end">
-				<button className="btn btn-error btn-sm">Logout</button>
-			</div>
+			{user?.uid ? (
+				<div className="text-right w-full justify-end ">
+					<button onClick={logOutHandler} className="btn btn-error btn-sm">
+						Logout
+					</button>
+				</div>
+			) : (
+				<div className="text-right w-full justify-end ">
+					<Link to="/login" className="btn btn-error btn-sm">
+						Login
+					</Link>
+				</div>
+			)}
 		</div>
 	);
 };
