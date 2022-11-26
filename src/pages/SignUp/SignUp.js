@@ -1,25 +1,28 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContetxt/AuthProvider";
 import useToken from "../../hooks/useToken";
 import Alert from "../Shared/Alert/Alert";
 
 const SignUp = () => {
-	const { createUser, updateUserProfile } = useContext(AuthContext);
+	const { createUser, updateUserProfile, handleGoogleSignIn } =
+		useContext(AuthContext);
 	const [emailToken, setEmailtoken] = useState("");
 	const [token] = useToken(emailToken);
 	const navigate = useNavigate();
+	const location = useLocation();
 	const [error, setError] = useState("");
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
+	const from = location?.state?.from?.pathname || "/";
 
 	if (token) {
-		navigate("/");
+		navigate(from, { replace: true });
 	}
 
 	const onSubmit = (data) => {
@@ -47,7 +50,6 @@ const SignUp = () => {
 						console.log(data);
 						if (data.acknowledged) {
 							setEmailtoken(email);
-							localStorage.setItem("resale-user-role", role);
 							toast.success("user created");
 						}
 						setError("");
@@ -77,6 +79,43 @@ const SignUp = () => {
 			});
 	};
 	// console.log(errors);
+	// google signup
+	const googleSignIn = () => {
+		handleGoogleSignIn()
+			.then((result) => {
+				const user = result.user;
+				// create user in mongodb
+				fetch("http://localhost:5000/users/google", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify({
+						email: user.email,
+						role: "buyer",
+						name: user.displayName,
+						isVerified: false,
+					}),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
+						if (data.acknowledged) {
+							setEmailtoken(user.email);
+							toast.success("user created");
+							setError("");
+						}
+					})
+					.catch((err) => {
+						setError(err.message);
+					});
+			})
+			.catch((error) => {
+				console.error("error: ", error);
+				setError(error.message);
+			});
+	};
+
 	return (
 		<div>
 			<form
@@ -169,8 +208,12 @@ const SignUp = () => {
 				</div>
 
 				<div className="text-center mt-3 w-3/4 mx-auto mb-3">
-					<button type="button" className="btn btn-primary block w-full">
-						login with google
+					<button
+						type="button"
+						onClick={googleSignIn}
+						className="btn btn-primary block w-full"
+					>
+						signup with google
 					</button>
 				</div>
 				<p className="mt-5 text-xl mx-auto w-3/4 capitalize font-semibold text-left">
