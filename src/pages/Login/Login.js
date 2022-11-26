@@ -22,7 +22,7 @@ const Login = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const { signIn } = useContext(AuthContext);
+	const { signIn, handleGoogleSignIn } = useContext(AuthContext);
 
 	const onSubmit = (data) => {
 		const { email, password } = data;
@@ -32,16 +32,6 @@ const Login = () => {
 				const user = result.user;
 				console.log(user);
 				toast.success("user login");
-				fetch(`http://localhost:5000/user?email=${user.email}`)
-					.then((res) => res.json())
-					.then((data) => {
-						console.log(data);
-						localStorage.setItem("resale-user-role", data.role);
-					})
-					.catch((err) => {
-						console.log(err);
-						setError(err.message);
-					});
 				setLoginEmail(data.email);
 			})
 			.catch((error) => {
@@ -50,6 +40,41 @@ const Login = () => {
 			});
 
 		// console.log(email, password);
+	};
+
+	const googleSignIn = () => {
+		handleGoogleSignIn()
+			.then((result) => {
+				const user = result.user;
+				fetch("http://localhost:5000/users/google", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify({
+						email: user.email,
+						role: "buyer",
+						name: user.displayName,
+						isVerified: false,
+					}),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
+						if (data.acknowledged) {
+							setLoginEmail(user.email);
+							toast.success("user created");
+							setError("");
+						}
+					})
+					.catch((err) => {
+						setError(err.message);
+					});
+			})
+			.catch((error) => {
+				console.error("error: ", error);
+				setError(error.message);
+			});
 	};
 	// console.log(errors);
 	return (
@@ -107,7 +132,11 @@ const Login = () => {
 				</div>
 
 				<div className="text-center mt-3 w-3/4 mx-auto mb-3">
-					<button type="button" className="btn btn-primary block w-full">
+					<button
+						type="button"
+						onClick={googleSignIn}
+						className="btn btn-primary block w-full"
+					>
 						login with google
 					</button>
 				</div>
