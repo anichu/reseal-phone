@@ -19,6 +19,7 @@ import PrivateRoute from "../PrivateRoutes/PrivateRoutes";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import axios from "axios";
 import ReportedItems from "../../pages/DashBoard/ReportedItems/ReportedItems";
+import Payment from "../../pages/DashBoard/Payment/Payment";
 
 const router = createBrowserRouter([
 	{
@@ -108,6 +109,12 @@ const router = createBrowserRouter([
 						<ReportedItems></ReportedItems>
 					</AdminRoute>
 				),
+			},
+			{
+				path: "/dashboard/product/payment/:id",
+				element: <Payment></Payment>,
+				loader: ({ params }) =>
+					axios.get(`http://localhost:5000/user/buyer/bookings/${params.id}`),
 			},
 		],
 	},

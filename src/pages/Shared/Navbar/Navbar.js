@@ -78,6 +78,7 @@ const Navbar = () => {
 			</div>
 			{user ? (
 				<div className="text-right w-full justify-end ">
+					<div className="mx-5">{user.displayName}</div>
 					<button onClick={logOutHandler} className="btn btn-error btn-sm">
 						Logout
 					</button>
