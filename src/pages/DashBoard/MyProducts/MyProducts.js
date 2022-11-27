@@ -44,6 +44,27 @@ const MyProducts = () => {
 			toast.success("product delete successfully");
 		}
 	};
+
+	const advertisedHandler = async (id) => {
+		try {
+			const { data } = await axios.get(
+				`http://localhost:5000/myproducts/advertised/${id}`,
+				{
+					headers: {
+						authorization: `bearer ${localStorage.getItem("accessToken")}`,
+					},
+				}
+			);
+			if (data) {
+				refetch();
+				toast.success("the product advertised successfully");
+			}
+			console.log(data);
+		} catch (error) {
+			toast.error(error.message);
+			console.log(error.message);
+		}
+	};
 	return (
 		<div>
 			<div className="overflow-x-auto">
@@ -85,8 +106,11 @@ const MyProducts = () => {
 										</td>
 
 										<td>
-											{product.isAvailable && (
-												<button className="btn btn-primary btn-sm">
+											{product.isAvailable && !product.isAdvertised && (
+												<button
+													className="btn btn-primary btn-sm"
+													onClick={() => advertisedHandler(product._id)}
+												>
 													advertise
 												</button>
 											)}
