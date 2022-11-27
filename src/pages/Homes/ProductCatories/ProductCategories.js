@@ -2,7 +2,6 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "../../Shared/Loader/Loader";
-import { Link } from "react-router-dom";
 import Category from "../Category/Category";
 const ProductCategories = () => {
 	const { data: categories = [], isLoading } = useQuery({

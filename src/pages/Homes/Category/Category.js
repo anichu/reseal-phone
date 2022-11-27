@@ -5,6 +5,7 @@ const Category = ({ category, index }) => {
 	return (
 		<div className="flex-1 mx-10 flex">
 			<Link
+				to={`/category/${category.name}`}
 				className={`btn ${
 					index % 2 === 0 ? "btn-primary" : "btn-success"
 				} w-full py-10`}

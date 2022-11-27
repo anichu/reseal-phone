@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 
 const useRole = (email) => {
 	const [role, setRole] = useState("");
+	const [username, setUsername] = useState("");
+	const [isVerified, setIsVerified] = useState("");
 	const [roleLoading, setRoleLoading] = useState(true);
 	useEffect(() => {
 		if (email) {
@@ -10,7 +12,10 @@ const useRole = (email) => {
 				.then((res) => res.json())
 				.then((data) => {
 					console.log(data);
-					setRole(data.role);
+					const { role, isVerified, name } = data;
+					setRole(role);
+					setIsVerified(isVerified);
+					setUsername(name);
 					setRoleLoading(false);
 				})
 				.catch((err) => {
@@ -21,7 +26,7 @@ const useRole = (email) => {
 		}
 	}, [email]);
 
-	return [role, roleLoading];
+	return [role, roleLoading, isVerified, username];
 };
 
 export default useRole;

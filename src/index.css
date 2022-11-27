@@ -27,3 +27,13 @@ code {
 	background-color: #570df8;
 	color: white;
 }
+
+.banner-bg {
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.overlay-bg {
+	background-color: rgba(0, 0, 0, 0.4);
+}

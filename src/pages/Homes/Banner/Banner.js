@@ -10,8 +10,8 @@ const Banner = () => {
 			<div className="flex w-full overlay-bg items-center justify-center h-full">
 				<div>
 					<h1 className="text-5xl text-white font-medium text-center leading-[60px] ">
-						Welcome to <span className="text-purple-800">Reseal</span> <br />{" "}
-						<span className="text-purple-800"> Phone </span> website
+						Welcome to <span className="text-primary">Reseal</span> <br />{" "}
+						<span className="text-primary"> Phone </span> website
 					</h1>
 					<p className="text-gray-300 text-xl text-center capitalize font-semibold mt-5">
 						Have you old phone?This is right place for you. <br /> you can sell

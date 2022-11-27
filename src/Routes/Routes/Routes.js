@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashBoardLayout from "../../LayOut/DashBoardLayout/DashBoardLayout";
 import Main from "../../LayOut/Main/Main";
 import NotFoundRoute from "../../NotFounRoute/NotFoundRoute";
+import CategoryProduct from "../../pages/CategoryProduct/CategoryProduct";
 import AddProduct from "../../pages/DashBoard/AddProduct/AddProduct";
 import AllBuyers from "../../pages/DashBoard/AllBuyers/AllBuyers";
 import AllSellers from "../../pages/DashBoard/AllSelers/AllSellers";
@@ -16,6 +17,8 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoutes/PrivateRoutes";
 import SellerRoute from "../SellerRoute/SellerRoute";
+import axios from "axios";
+import ReportedItems from "../../pages/DashBoard/ReportedItems/ReportedItems";
 
 const router = createBrowserRouter([
 	{
@@ -33,6 +36,12 @@ const router = createBrowserRouter([
 			{
 				path: "/signup",
 				element: <SignUp></SignUp>,
+			},
+			{
+				path: "/category/:category",
+				element: <CategoryProduct></CategoryProduct>,
+				loader: ({ params }) =>
+					axios.get(`http://localhost:5000/products/${params.category}`),
 			},
 		],
 	},
@@ -90,6 +99,14 @@ const router = createBrowserRouter([
 					<SellerRoute>
 						<AddProduct></AddProduct>
 					</SellerRoute>
+				),
+			},
+			{
+				path: "/dashboard/reporteditems",
+				element: (
+					<AdminRoute>
+						<ReportedItems></ReportedItems>
+					</AdminRoute>
 				),
 			},
 		],
