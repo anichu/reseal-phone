@@ -117,13 +117,15 @@ const MyProducts = () => {
 										</td>
 
 										<td>
-											{product.isAvailable && !product.isAdvertised && (
+											{product.isAvailable && !product.isAdvertised ? (
 												<button
 													className="btn btn-primary btn-sm"
 													onClick={() => advertisedHandler(product._id)}
 												>
 													advertise
 												</button>
+											) : (
+												<div className="badge badge-success">advertised</div>
 											)}
 										</td>
 										<td>

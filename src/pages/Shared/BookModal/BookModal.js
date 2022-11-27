@@ -4,9 +4,11 @@ import axios from "axios";
 import Alert from "../Alert/Alert";
 import { AuthContext } from "../../../contexts/AuthContetxt/AuthProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const BookModal = ({ booking, setBooking }) => {
 	const [error, setError] = useState();
 	const { user } = useContext(AuthContext);
+	const navigate = useNavigate();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -43,6 +45,7 @@ const BookModal = ({ booking, setBooking }) => {
 			}
 			console.log(data);
 			setBooking(null);
+			navigate("/dashboard/myorders");
 		} catch (err) {
 			console.log(err);
 		}

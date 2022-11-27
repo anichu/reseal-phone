@@ -4,7 +4,7 @@ import Loader from "../../Shared/Loader/Loader";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const AllBuyers = () => {
+const Allsellers = () => {
 	const {
 		data: sellers = [],
 		isLoading,
@@ -37,14 +37,21 @@ const AllBuyers = () => {
 	};
 
 	const verifyHandler = async (id) => {
-		console.log(id);
+		console.log("sina", id);
+		console.log(localStorage.getItem("accessToken"));
 		try {
 			const { data } = await axios.put(
-				`http://localhost:5000/user/seller/verify/${id}`
+				`http://localhost:5000/user/seller/verify/${id}`,
+				{},
+				{
+					headers: {
+						authorization: `bearer ${localStorage.getItem("accessToken")}`,
+					},
+				}
 			);
 			console.log(data);
 			if (data.modifiedCount > 0) {
-				toast.success("seller is updated successfully");
+				toast.success("seller is verified successfully");
 				refetch();
 			}
 		} catch (err) {
@@ -110,4 +117,4 @@ const AllBuyers = () => {
 	);
 };
 
-export default AllBuyers;
+export default Allsellers;

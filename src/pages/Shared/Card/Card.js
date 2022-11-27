@@ -26,6 +26,7 @@ const Card = ({ product, setBooking }) => {
 		if (!user) {
 			navigate("/login");
 		}
+		setBooking(product);
 	};
 
 	return (
@@ -89,7 +90,7 @@ const Card = ({ product, setBooking }) => {
 						<div>
 							<label
 								htmlFor="my-booking-modal"
-								onClick={() => setBooking(product)}
+								onClick={bookHandler}
 								className="btn bg-indigo-900 btn-sm"
 							>
 								book now
