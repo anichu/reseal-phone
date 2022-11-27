@@ -28,6 +28,14 @@ const DashBoardHeader = () => {
 						>
 							All Sellers
 						</NavLink>
+						<NavLink
+							to="/dashboard/reporteditems"
+							className={({ isActive }) =>
+								isActive ? "tab tab-active" : "tab"
+							}
+						>
+							Reported Items
+						</NavLink>
 					</>
 				)}
 
