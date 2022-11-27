@@ -9,7 +9,7 @@ const CategoryProduct = () => {
 
 	return (
 		<div>
-			<div className="grid grid-cols-2 gap-5 m-10">
+			<div className="grid grid-cols-3 gap-5 m-10">
 				{products.map((product) => (
 					<Card
 						key={product._id}

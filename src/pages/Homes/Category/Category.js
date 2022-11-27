@@ -6,11 +6,16 @@ const Category = ({ category, index }) => {
 		<div className="flex-1 mx-10 flex">
 			<Link
 				to={`/category/${category.name}`}
-				className={`btn ${
-					index % 2 === 0 ? "btn-primary" : "btn-success"
-				} w-full py-10`}
+				className="bg-black px-20 rounded-lg py-5 shadow-xl hover:bg-indigo-900 duration-300 transition-all"
 			>
-				{category.name}
+				<div className="flex flex-col">
+					<img
+						src={category?.image}
+						className="w-20 h-20 rounded-full	"
+						alt=""
+					/>
+					<h3 className="text-white text-center mt-2">{category?.name}</h3>
+				</div>
 			</Link>
 		</div>
 	);
