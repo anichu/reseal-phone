@@ -29,6 +29,17 @@ const MyProducts = () => {
 	if (isLoading) {
 		return <Loader></Loader>;
 	}
+
+	if (products.length === 0) {
+		return (
+			<div className="my-10">
+				<h1 className="text-4xl text-center text-red-500">
+					No products are added
+				</h1>
+			</div>
+		);
+	}
+
 	const deleteHandler = async (id) => {
 		const { data } = await axios.delete(
 			`http://localhost:5000/myproducts/${id}`,
