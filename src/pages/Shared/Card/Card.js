@@ -35,58 +35,54 @@ const Card = ({ product, setBooking }) => {
 					<img src={image} alt={name} className="w-[350px] h-[300px] rounded" />
 				</figure>
 				<div className="card-body p-5">
-					<h2 className="card-title capitalize">
-						{name}
-						<div className="badge badge-primary">{condition}</div>
-					</h2>
-					<p className="text-justify">{description}</p>
-					<div className="card-actions justify-end">
-						<div className="badge badge-primary">{category}</div>
+					<div className="">
+						<h2 className="card-title capitalize">{name}</h2>
+						<div className="badge mt-1">{condition}</div>
+						<div className=" ml-2 badge ">{category}</div>
 					</div>
-					<div className="flex justify-between my-2">
+					<p className="text-justify">{description.substring(0, 200)} </p>
+					<div className="flex justify-between ">
 						<div>
-							<strong className="">Original price:</strong>{" "}
-							<b className="text-primary">${price}</b>
+							<span className="mr-2 font-bold">Original-price:</span>
+							<span>${price}</span>
 						</div>
 						<div>
-							<strong className="">Reseal price:</strong>{" "}
-							<b className="text-primary">${resealprice}</b>
+							<span className="mr-2 font-bold">Reseal-price:</span>{" "}
+							<span className="">${resealprice}</span>
 						</div>
 					</div>
 					<div className="flex justify-between">
 						<div className=" text-base font-semibold ">
-							Purchase: <span className="text-primary">{purchasedate}</span>
+							<span className="mr-2 font-bold">Purchase:</span>{" "}
+							<span className="">{purchasedate}</span>
 						</div>
 						<div className=" text-base font-semibold ">
-							Posted:{" "}
-							<span className="text-primary">
-								{createdDate.substring(0, 10)}
-							</span>
+							<span className="mr-2 font-bold">Posted:</span>{" "}
+							<span className="">{createdDate.substring(0, 10)}</span>
+						</div>
+					</div>
+					<div className="flex justify-between my-2">
+						<div className=" text-base font-semibold ">
+							<span className="font-bold">Address:</span>{" "}
+							<span className="">{location}</span>
+						</div>
+						<div className=" text-base font-semibold ">
+							<span className=" font-bold">Phone:</span>{" "}
+							<span className="">{phonenumber}</span>
 						</div>
 					</div>
 					<div className="flex justify-between">
 						<h2 className=" text-base font-semibold  flex items-center">
-							<span className="text-2xl mr-1">Seller:</span>{" "}
-							<span className="text-primary text-2xl font-semibold capitalize">
+							<span className=" mr-1 font-bold text-xl">seller:</span>{" "}
+							<span className="text-indigo-900 text-xl capitalize">
 								{username}
 							</span>{" "}
 							{isVerified && (
-								<span className="rounded-full bg-blue-600 w-4 h-4 flex text-white items-center justify-center">
-									<HiOutlineCheck className="w-3 h-3"></HiOutlineCheck>
+								<span className="rounded-full bg-blue-600 w-4 h-4 mx-1 mt-1 flex text-white items-center justify-center">
+									<HiOutlineCheck className="w-4 h-4"></HiOutlineCheck>
 								</span>
 							)}
 						</h2>
-					</div>
-
-					<div className="flex justify-between my-2">
-						<div className="flex">
-							<strong className="">Address:</strong>{" "}
-							<b className="text-primary">{location}</b>
-						</div>
-						<div className="flex ml-2">
-							<strong className="">Phone:</strong>{" "}
-							<b className="text-primary">{phonenumber}</b>
-						</div>
 					</div>
 
 					<div className="card-buttom flex items-center justify-between my-5">
@@ -94,7 +90,7 @@ const Card = ({ product, setBooking }) => {
 							<label
 								htmlFor="my-booking-modal"
 								onClick={() => setBooking(product)}
-								className="btn btn-primary btn-sm"
+								className="btn bg-indigo-900 btn-sm"
 							>
 								book now
 							</label>
