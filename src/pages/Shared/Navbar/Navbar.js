@@ -76,7 +76,7 @@ const Navbar = () => {
 			<div className="navbar-start w-full hidden lg:flex">
 				<ul className="menu menu-horizontal p-0">{menuItems}</ul>
 			</div>
-			{user?.uid ? (
+			{user ? (
 				<div className="text-right w-full justify-end ">
 					<button onClick={logOutHandler} className="btn btn-error btn-sm">
 						Logout

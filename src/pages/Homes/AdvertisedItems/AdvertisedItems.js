@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Card from "../../Shared/Card/Card";
 import Loader from "../../Shared/Loader/Loader";
+import BookModal from "../../Shared/BookModal/BookModal";
 const AdvertisedItems = () => {
 	const { data: advertisedProducts = [], isLoading } = useQuery({
 		queryKey: ["products", "advertised"],
@@ -14,6 +15,9 @@ const AdvertisedItems = () => {
 			return data;
 		},
 	});
+
+	const [booking, setBooking] = useState(null);
+
 	console.log(advertisedProducts);
 	return (
 		<>
@@ -24,10 +28,21 @@ const AdvertisedItems = () => {
 						advertised items
 					</h1>
 					<div className="grid grid-cols-3 gap-5">
-						{advertisedProducts.map((product) => (
-							<Card product={product} key={product._id}></Card>
-						))}
+						{advertisedProducts.map((product) => {
+							return (
+								<>
+									<Card
+										product={product}
+										setBooking={setBooking}
+										key={product._id}
+									></Card>
+								</>
+							);
+						})}
 					</div>
+					{booking && (
+						<BookModal setBooking={setBooking} booking={booking}></BookModal>
+					)}
 				</div>
 			)}
 		</>

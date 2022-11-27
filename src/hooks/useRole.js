@@ -21,7 +21,7 @@ const useRole = (email) => {
 				.catch((err) => {
 					console.log(err);
 					setRoleLoading(false);
-					toast.error(err.message);
+					// toast.error(err.message);
 				});
 		}
 	}, [email]);
