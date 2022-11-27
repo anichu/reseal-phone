@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContetxt/AuthProvider";
 const AddProduct = () => {
 	const { user } = useContext(AuthContext);
@@ -10,6 +11,8 @@ const AddProduct = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
+
+	const navigate = useNavigate();
 
 	const onSubmit = (data) => {
 		const {
@@ -55,6 +58,7 @@ const AddProduct = () => {
 						method: "POST",
 						headers: {
 							"content-type": "application/json",
+							authorization: `bearer ${localStorage.getItem("accessToken")}`,
 						},
 						body: JSON.stringify(currentProduct),
 					})
@@ -62,6 +66,7 @@ const AddProduct = () => {
 						.then((result) => {
 							console.log(result);
 							toast.success("product added successfully");
+							navigate("/dashboard/myproducts");
 						})
 						.catch((err) => {
 							toast.error(err.message);
