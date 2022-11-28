@@ -44,7 +44,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/category/:category",
-				element: <CategoryProduct></CategoryProduct>,
+				element: (
+					<PrivateRoute>
+						<CategoryProduct></CategoryProduct>
+					</PrivateRoute>
+				),
 				loader: ({ params }) =>
 					axios.get(`http://localhost:5000/products/${params.category}`),
 			},
