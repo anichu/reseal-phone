@@ -23,11 +23,11 @@ const AdvertisedItems = () => {
 		<>
 			{isLoading && <Loader></Loader>}
 			{advertisedProducts.length > 0 && (
-				<div className="mx-10">
+				<div className="sm:mx-10 mx-4">
 					<h1 className="text-xl text-primary font-semibold my-5 capitalize">
 						advertised items
 					</h1>
-					<div className="grid grid-cols-3 gap-5">
+					<div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
 						{advertisedProducts.map((product) => {
 							return (
 								<>

@@ -22,11 +22,13 @@ import ReportedItems from "../../pages/DashBoard/ReportedItems/ReportedItems";
 import Payment from "../../pages/DashBoard/Payment/Payment";
 import MyWishList from "../../pages/DashBoard/MyWishList/MyWishList";
 import Blog from "../../pages/Blog/Blog";
+import DisplayError from "../../pages/Shared/DisplayError/DisplayError";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Main></Main>,
+		errorElement: <DisplayError></DisplayError>,
 		children: [
 			{
 				path: "/",

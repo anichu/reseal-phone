@@ -43,30 +43,34 @@ const Card = ({ product, setBooking }) => {
 			image: image,
 			phonenumber: phonenumber,
 		};
-
-		try {
-			const { data } = await axios.post(
-				"http://localhost:5000/mywishlist",
-				wishList,
-				{
-					headers: {
-						"content-type": "application/json",
-					},
-				}
-			);
-			toast.success("product is added to wishlist successfully");
-			console.log(data);
-		} catch (error) {
-			console.log(error.message);
+		if (user) {
+			try {
+				const { data } = await axios.post(
+					"http://localhost:5000/mywishlist",
+					wishList,
+					{
+						headers: {
+							"content-type": "application/json",
+						},
+					}
+				);
+				toast.success("product is added to wishlist successfully");
+				console.log(data);
+			} catch (error) {
+				console.log(error.message);
+			}
 		}
-		console.log(wishList);
 	};
 
 	return (
 		<>
-			<div className="card w-96  bg-base-100 shadow-xl mx-auto">
+			<div className="card max-w-96  bg-base-100 shadow-xl mx-auto">
 				<figure>
-					<img src={image} alt={name} className="w-[350px] h-[300px] rounded" />
+					<img
+						src={image}
+						alt={name}
+						className="md:w-[350px] w-full md:h-[300px] h-full rounded"
+					/>
 				</figure>
 				<div className="card-body p-5">
 					<div className="">
@@ -132,7 +136,7 @@ const Card = ({ product, setBooking }) => {
 						<div>
 							<button
 								onClick={() => wishListHandler(product)}
-								className="btn btn-sm btn-success"
+								className="btn btn-sm btn-success sm:ml-0 ml-1"
 							>
 								Add to wishlist
 							</button>

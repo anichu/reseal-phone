@@ -8,6 +8,7 @@ const useRole = (email) => {
 	const [roleLoading, setRoleLoading] = useState(true);
 	useEffect(() => {
 		if (email) {
+			setRoleLoading(true);
 			fetch(`http://localhost:5000/user?email=${email}`)
 				.then((res) => res.json())
 				.then((data) => {
@@ -21,7 +22,6 @@ const useRole = (email) => {
 				.catch((err) => {
 					console.log(err);
 					setRoleLoading(false);
-					// toast.error(err.message);
 				});
 		}
 	}, [email]);

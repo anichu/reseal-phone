@@ -16,7 +16,7 @@ const ProductCategories = () => {
 		<div className="mx-10 mb-10">
 			<h1 className="text-xl text-primary font-semibold my-5">Categories</h1>
 			{isLoading && <Loader></Loader>}
-			<div className="flex justify-around flex-wrap">
+			<div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5">
 				{categories.map((category, index) => (
 					<Category category={category} index={index} key={index}></Category>
 				))}

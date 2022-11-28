@@ -13,7 +13,8 @@ const Login = () => {
 	const [error, setError] = useState("");
 	const [token] = useToken(loginEmail);
 
-	const from = location?.state?.from?.pathname || "/";
+	// const from = location?.state?.from?.pathname || "/";
+	const from = "/";
 	if (token) {
 		navigate(from, { replace: true });
 	}

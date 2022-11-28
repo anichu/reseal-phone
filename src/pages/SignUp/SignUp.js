@@ -19,7 +19,7 @@ const SignUp = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const from = location?.state?.from?.pathname || "/";
+	const from = "/";
 
 	if (token) {
 		navigate(from, { replace: true });

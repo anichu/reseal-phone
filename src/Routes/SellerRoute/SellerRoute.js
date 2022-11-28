@@ -9,6 +9,7 @@ const SellerRoute = ({ children }) => {
 	const [role, roleLoading] = useRole(user?.email);
 	const location = useLocation();
 	if (loading || roleLoading) {
+		console.log(roleLoading);
 		return <Loader></Loader>;
 	}
 

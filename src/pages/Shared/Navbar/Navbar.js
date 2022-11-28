@@ -66,6 +66,7 @@ const Navbar = () => {
 						tabIndex={0}
 						className="menu menu-compact dropdown-content mt-3 p-2 shadow text-white bg-indigo-800  rounded-box w-52"
 					>
+						<div className="ml-4">{user.displayName}</div>
 						{menuItems}
 					</ul>
 				</div>
@@ -78,7 +79,7 @@ const Navbar = () => {
 			</div>
 			{user ? (
 				<div className="text-right w-full justify-end ">
-					<div className="mx-5">{user.displayName}</div>
+					<div className="mx-5 profile-name">{user.displayName}</div>
 					<button onClick={logOutHandler} className="btn btn-error btn-sm">
 						Logout
 					</button>

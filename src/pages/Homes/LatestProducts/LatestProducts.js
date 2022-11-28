@@ -14,13 +14,13 @@ const LatestProducts = () => {
 	});
 	const [booking, setBooking] = useState(null);
 	return (
-		<div className="latest-product mx-10 my-10">
+		<div className="latest-product sm:mx-10 mx-4 my-10">
 			<h1 className="text-xl text-primary font-semibold my-5 capitalize">
 				Latest Products
 			</h1>
 
 			{isLoading && <Loader></Loader>}
-			<div className="grid grid-cols-3 gap-5">
+			<div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
 				{phones.map((product, index) => (
 					<Card key={index} setBooking={setBooking} product={product}></Card>
 				))}

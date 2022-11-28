@@ -37,3 +37,27 @@ code {
 .overlay-bg {
 	background-color: rgba(0, 0, 0, 0.4);
 }
+
+@media only screen and (max-width: 860px) {
+	.carousel-title-br {
+		display: none;
+	}
+}
+@media only screen and (max-width: 500px) {
+	.profile-name {
+		display: none;
+	}
+}
+@media only screen and (max-width: 420px) {
+	.course-title {
+		font-size: 20px;
+	}
+}
+@media only screen and (max-width: 350px) {
+	.course-title-p {
+		display: none;
+	}
+	.course {
+		top: 35%;
+	}
+}

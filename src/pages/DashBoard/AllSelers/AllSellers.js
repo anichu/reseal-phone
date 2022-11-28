@@ -24,7 +24,12 @@ const Allsellers = () => {
 	const deleteHandler = async (id) => {
 		try {
 			const { data } = await axios.delete(
-				`http://localhost:5000/user/seller/${id}`
+				`http://localhost:5000/user/seller/${id}`,
+				{
+					headers: {
+						authorization: `bearer ${localStorage.getItem("accessToken")}`,
+					},
+				}
 			);
 			console.log(data);
 			if (data.deletedCount > 0) {
