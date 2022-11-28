@@ -31,7 +31,7 @@ const BookModal = ({ booking, setBooking, wishListId }) => {
 
 		try {
 			const { data } = await axios.post(
-				"http://localhost:5000/booking",
+				"https://resale-phone-server.vercel.app/booking",
 				currentBooking,
 				{
 					headers: {
@@ -43,7 +43,7 @@ const BookModal = ({ booking, setBooking, wishListId }) => {
 			if (data.acknowledged) {
 				if (wishListId) {
 					const { data } = await axios.get(
-						`http://localhost:5000/mywishlist/${wishListId}`
+						`https://resale-phone-server.vercel.app/mywishlist/${wishListId}`
 					);
 					console.log(data);
 				}

@@ -11,7 +11,7 @@ const MyWishList = () => {
 		queryKey: ["wishList"],
 		queryFn: async () => {
 			const { data } = await axios.get(
-				"http://localhost:5000/user/mywishlist",
+				"https://resale-phone-server.vercel.app/user/mywishlist",
 				{
 					headers: {
 						authorization: `bearer ${localStorage.getItem("accessToken")}`,

@@ -47,7 +47,7 @@ const Login = () => {
 		handleGoogleSignIn()
 			.then((result) => {
 				const user = result.user;
-				fetch("http://localhost:5000/users/google", {
+				fetch("https://resale-phone-server.vercel.app/users/google", {
 					method: "POST",
 					headers: {
 						"content-type": "application/json",

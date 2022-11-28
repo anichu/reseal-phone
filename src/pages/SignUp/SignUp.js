@@ -34,7 +34,7 @@ const SignUp = () => {
 				// update user profile name
 				handleUpdateUserProfile(username);
 				// create user in mongodb
-				fetch("http://localhost:5000/users", {
+				fetch("https://resale-phone-server.vercel.app/users", {
 					method: "POST",
 					headers: {
 						"content-type": "application/json",
@@ -85,7 +85,7 @@ const SignUp = () => {
 			.then((result) => {
 				const user = result.user;
 				// create user in mongodb
-				fetch("http://localhost:5000/users/google", {
+				fetch("https://resale-phone-server.vercel.app/users/google", {
 					method: "POST",
 					headers: {
 						"content-type": "application/json",

@@ -8,7 +8,9 @@ const LatestProducts = () => {
 	const { data: phones = [], isLoading } = useQuery({
 		queryKey: "latestproducts",
 		queryFn: async () => {
-			const { data } = await axios.get("http://localhost:5000/latestproducts");
+			const { data } = await axios.get(
+				"https://resale-phone-server.vercel.app/latestproducts"
+			);
 			return data;
 		},
 	});

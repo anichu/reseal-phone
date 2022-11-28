@@ -7,7 +7,9 @@ const ProductCategories = () => {
 	const { data: categories = [], isLoading } = useQuery({
 		queryKey: ["categories"],
 		queryFn: async () => {
-			const { data } = await axios.get("http://localhost:5000/categories");
+			const { data } = await axios.get(
+				"https://resale-phone-server.vercel.app/categories"
+			);
 			console.log(data);
 			return data;
 		},

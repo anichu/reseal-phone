@@ -46,7 +46,7 @@ const Card = ({ product, setBooking }) => {
 		if (user) {
 			try {
 				const { data } = await axios.post(
-					"http://localhost:5000/mywishlist",
+					"https://resale-phone-server.vercel.app/mywishlist",
 					wishList,
 					{
 						headers: {

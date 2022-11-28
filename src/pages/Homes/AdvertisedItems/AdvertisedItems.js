@@ -9,7 +9,7 @@ const AdvertisedItems = () => {
 		queryKey: ["products", "advertised"],
 		queryFn: async (req, res) => {
 			const { data } = await axios.get(
-				"http://localhost:5000/products/advertised"
+				"https://resale-phone-server.vercel.app/products/advertised"
 			);
 			console.log(data);
 			return data;

@@ -15,7 +15,7 @@ const CheckoutForm = ({ booking }) => {
 	const { price } = booking;
 
 	useEffect(() => {
-		fetch("http://localhost:5000/create-payment-intent", {
+		fetch("https://resale-phone-server.vercel.app/create-payment-intent", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -78,7 +78,7 @@ const CheckoutForm = ({ booking }) => {
 			};
 			try {
 				const { data } = await axios.post(
-					"http://localhost:5000/payments",
+					"https://resale-phone-server.vercel.app/payments",
 					currentPayment,
 					{
 						headers: {

@@ -50,7 +50,9 @@ const router = createBrowserRouter([
 					</PrivateRoute>
 				),
 				loader: ({ params }) =>
-					axios.get(`http://localhost:5000/products/${params.category}`),
+					axios.get(
+						`https://resale-phone-server.vercel.app/products/${params.category}`
+					),
 			},
 			{
 				path: "/blog",
@@ -126,7 +128,9 @@ const router = createBrowserRouter([
 				path: "/dashboard/product/payment/:id",
 				element: <Payment></Payment>,
 				loader: ({ params }) =>
-					axios.get(`http://localhost:5000/user/buyer/bookings/${params.id}`),
+					axios.get(
+						`https://resale-phone-server.vercel.app/user/buyer/bookings/${params.id}`
+					),
 			},
 			{
 				path: "/dashboard/mywishlist",

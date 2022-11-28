@@ -12,11 +12,14 @@ const MyProducts = () => {
 		queryKey: ["myproducts"],
 		queryFn: async () => {
 			try {
-				const { data } = await axios.get("http://localhost:5000/myproducts", {
-					headers: {
-						authorization: `bearer ${localStorage.getItem("accessToken")}`,
-					},
-				});
+				const { data } = await axios.get(
+					"https://resale-phone-server.vercel.app/myproducts",
+					{
+						headers: {
+							authorization: `bearer ${localStorage.getItem("accessToken")}`,
+						},
+					}
+				);
 				console.log(data);
 				return data;
 			} catch (error) {
@@ -42,7 +45,7 @@ const MyProducts = () => {
 
 	const deleteHandler = async (id) => {
 		const { data } = await axios.delete(
-			`http://localhost:5000/myproducts/${id}`,
+			`https://resale-phone-server.vercel.app/myproducts/${id}`,
 			{
 				headers: {
 					authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -59,7 +62,7 @@ const MyProducts = () => {
 	const advertisedHandler = async (id) => {
 		try {
 			const { data } = await axios.get(
-				`http://localhost:5000/myproducts/advertised/${id}`,
+				`https://resale-phone-server.vercel.app/myproducts/advertised/${id}`,
 				{
 					headers: {
 						authorization: `bearer ${localStorage.getItem("accessToken")}`,

@@ -12,11 +12,14 @@ const AllBuyers = () => {
 	} = useQuery({
 		queryKey: ["buyer"],
 		queryFn: async () => {
-			const { data } = await axios.get("http://localhost:5000/allbuyers", {
-				headers: {
-					authorization: `bearer ${localStorage.getItem("accessToken")}`,
-				},
-			});
+			const { data } = await axios.get(
+				"https://resale-phone-server.vercel.app/allbuyers",
+				{
+					headers: {
+						authorization: `bearer ${localStorage.getItem("accessToken")}`,
+					},
+				}
+			);
 			console.log(data);
 			return data;
 		},
@@ -24,7 +27,7 @@ const AllBuyers = () => {
 	const deleteHandler = async (id) => {
 		try {
 			const { data } = await axios.delete(
-				`http://localhost:5000/user/buyer/${id}`
+				`https://resale-phone-server.vercel.app/user/buyer/${id}`
 			);
 			console.log(data);
 			if (data.deletedCount > 0) {
