@@ -20,6 +20,7 @@ import SellerRoute from "../SellerRoute/SellerRoute";
 import axios from "axios";
 import ReportedItems from "../../pages/DashBoard/ReportedItems/ReportedItems";
 import Payment from "../../pages/DashBoard/Payment/Payment";
+import MyWishList from "../../pages/DashBoard/MyWishList/MyWishList";
 
 const router = createBrowserRouter([
 	{
@@ -115,6 +116,14 @@ const router = createBrowserRouter([
 				element: <Payment></Payment>,
 				loader: ({ params }) =>
 					axios.get(`http://localhost:5000/user/buyer/bookings/${params.id}`),
+			},
+			{
+				path: "/dashboard/mywishlist",
+				element: (
+					<BuyerRoute>
+						<MyWishList></MyWishList>
+					</BuyerRoute>
+				),
 			},
 		],
 	},

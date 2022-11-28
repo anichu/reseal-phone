@@ -28,14 +28,6 @@ const DashBoardHeader = () => {
 						>
 							All Sellers
 						</NavLink>
-						<NavLink
-							to="/dashboard/reporteditems"
-							className={({ isActive }) =>
-								isActive ? "tab tab-active" : "tab"
-							}
-						>
-							Reported Items
-						</NavLink>
 					</>
 				)}
 
@@ -62,12 +54,24 @@ const DashBoardHeader = () => {
 				)}
 
 				{role && role === "buyer" && (
-					<NavLink
-						to="/dashboard/myorders"
-						className={({ isActive }) => (isActive ? "tab tab-active" : "tab")}
-					>
-						My Orders
-					</NavLink>
+					<>
+						<NavLink
+							to="/dashboard/myorders"
+							className={({ isActive }) =>
+								isActive ? "tab tab-active" : "tab"
+							}
+						>
+							My Orders
+						</NavLink>
+						<NavLink
+							to="/dashboard/mywishlist"
+							className={({ isActive }) =>
+								isActive ? "tab tab-active" : "tab"
+							}
+						>
+							My WishList
+						</NavLink>
+					</>
 				)}
 			</div>
 		</div>

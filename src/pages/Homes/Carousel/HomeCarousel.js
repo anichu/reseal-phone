@@ -61,7 +61,7 @@ const HomeCarousel = () => {
 						</h1>
 						<p className="text-center text-xl mt-5   text-white">
 							Are You want to <span className="text-indigo-600">business</span>{" "}
-							with us? This is a right place for you.Create a user account and
+							with us? This is a right place for you.Create a seller account and
 							add product.Happy Selling!!!
 						</p>
 					</div>

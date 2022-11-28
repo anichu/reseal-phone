@@ -1,8 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import useRole from "../../../hooks/useRole";
 import { HiOutlineCheck } from "react-icons/hi";
 import { AuthContext } from "../../../contexts/AuthContetxt/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 const Card = ({ product, setBooking }) => {
 	const navigate = useNavigate();
 	const { user } = useContext(AuthContext);
@@ -27,6 +29,37 @@ const Card = ({ product, setBooking }) => {
 			navigate("/login");
 		}
 		setBooking(product);
+	};
+
+	const wishListHandler = async (currentProduct) => {
+		if (!user) {
+			navigate("/login");
+		}
+		const wishList = {
+			title: name,
+			price: resealprice,
+			productId: _id,
+			email: user?.email,
+			image: image,
+			phonenumber: phonenumber,
+		};
+
+		try {
+			const { data } = await axios.post(
+				"http://localhost:5000/mywishlist",
+				wishList,
+				{
+					headers: {
+						"content-type": "application/json",
+					},
+				}
+			);
+			toast.success("product is added to wishlist successfully");
+			console.log(data);
+		} catch (error) {
+			console.log(error.message);
+		}
+		console.log(wishList);
 	};
 
 	return (
@@ -97,7 +130,12 @@ const Card = ({ product, setBooking }) => {
 							</label>
 						</div>
 						<div>
-							<button className="btn btn-sm btn-error">report</button>
+							<button
+								onClick={() => wishListHandler(product)}
+								className="btn btn-sm btn-success"
+							>
+								Add to wishlist
+							</button>
 						</div>
 					</div>
 				</div>
