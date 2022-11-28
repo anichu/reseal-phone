@@ -1,11 +1,18 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import BookModal from "../Shared/BookModal/BookModal";
 import Card from "../Shared/Card/Card";
+import Loader from "../Shared/Loader/Loader";
 
 const CategoryProduct = () => {
 	const { data: products = [] } = useLoaderData();
 	const [booking, setBooking] = useState(null);
+
+	const navigation = useNavigation();
+
+	if (navigation.state === "loading") {
+		return <Loader></Loader>;
+	}
 
 	return (
 		<div className="sm:mx-10 mx-5 my-10">

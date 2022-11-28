@@ -24,6 +24,17 @@ const MyOrders = () => {
 			return data;
 		},
 	});
+
+	if (orders.length === 0) {
+		return (
+			<div className="my-10">
+				<h1 className="text-center text-success text-xl font-semibold">
+					There is no product in orders
+				</h1>
+			</div>
+		);
+	}
+
 	if (isLoading) {
 		return <Loader></Loader>;
 	}

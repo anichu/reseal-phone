@@ -5,6 +5,7 @@ import Loader from "../../Shared/Loader/Loader";
 import BookModal from "../../Shared/BookModal/BookModal";
 const MyWishList = () => {
 	const [booking, setBooking] = useState(null);
+	const [wishListId, setWishListId] = useState("");
 
 	const { data: wishLists = [], isLoading } = useQuery({
 		queryKey: ["wishList"],
@@ -29,13 +30,14 @@ const MyWishList = () => {
 		return (
 			<div className="my-10">
 				<h1 className="text-center text-success text-xl font-semibold">
-					There is no wishList in wishList
+					There is no product in wishList
 				</h1>
 			</div>
 		);
 	}
 
-	const bookHandler = (currentBooking) => {
+	const bookHandler = async (currentBooking) => {
+		setWishListId(currentBooking._id);
 		setBooking({
 			name: currentBooking.title,
 			_id: currentBooking.productId,
@@ -93,7 +95,11 @@ const MyWishList = () => {
 				</table>
 			</div>
 			{booking && (
-				<BookModal booking={booking} setBooking={setBooking}></BookModal>
+				<BookModal
+					booking={booking}
+					wishListId={wishListId}
+					setBooking={setBooking}
+				></BookModal>
 			)}
 		</div>
 	);

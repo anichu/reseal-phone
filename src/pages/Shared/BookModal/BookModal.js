@@ -5,7 +5,7 @@ import Alert from "../Alert/Alert";
 import { AuthContext } from "../../../contexts/AuthContetxt/AuthProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-const BookModal = ({ booking, setBooking }) => {
+const BookModal = ({ booking, setBooking, wishListId }) => {
 	const [error, setError] = useState();
 	const { user } = useContext(AuthContext);
 	const navigate = useNavigate();
@@ -41,6 +41,12 @@ const BookModal = ({ booking, setBooking }) => {
 			);
 
 			if (data.acknowledged) {
+				if (wishListId) {
+					const { data } = await axios.get(
+						`http://localhost:5000/mywishlist/${wishListId}`
+					);
+					console.log(data);
+				}
 				toast.success("the item is booked");
 			}
 			console.log(data);

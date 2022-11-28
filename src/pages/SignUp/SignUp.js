@@ -181,10 +181,9 @@ const SignUp = () => {
 						})}
 						className="input input-bordered cursor-pointer focus:outline-none hover:border-gray-500 transition-all  hover:outline-none w-full"
 					>
-						<option value="" disabled selected>
-							Choose user type?
+						<option value="buyer" selected>
+							Buyer
 						</option>
-						<option value="buyer">Buyer</option>
 						<option value="seller">Seller</option>
 					</select>
 					{errors.role && (
