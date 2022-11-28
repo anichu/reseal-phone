@@ -1,20 +1,13 @@
 import React, { useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { useLoaderData, useNavigation } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
-import Loader from "../../Shared/Loader/Loader";
 const stripePromise = loadStripe(
 	"pk_test_51I6DRFCNUaJFevFCvVGOBtsMQabijQNqbRdlCEfSewyHXnuvpVvcH1PXpKcVsKWcEZiNBDm2SypkKjP2jJAqmybg00zObg7jl7"
 );
 const Payment = () => {
 	const { data } = useLoaderData();
-
-	const navigation = useNavigation();
-
-	if (navigation.state === "loading") {
-		return <Loader></Loader>;
-	}
 
 	console.log(data);
 	return (

@@ -120,7 +120,7 @@ const SignUp = () => {
 		<div className="my-10">
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="md:w-[50%] sm:w-[80%] w-[95%] mx-auto border shadow-2xl rounded-2xl p-5 mt-5"
+				className="md:w-[50%] sm:w-[80%] w-[95%]  mx-auto border shadow-2xl rounded-2xl p-5 mt-5"
 			>
 				{error && <Alert message={error}></Alert>}
 				<h1 className="text-center text-5xl my-5 text-primary">SignUp</h1>

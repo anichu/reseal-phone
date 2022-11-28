@@ -85,13 +85,13 @@ const AddProduct = () => {
 		<div>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="w-[50%] mx-auto border shadow-2xl rounded-2xl p-5 my-5"
+				className="md:w-[50%] sm:w-[80%] w-[95%] mx-auto border shadow-2xl rounded-2xl p-5 my-5"
 			>
 				<h1 className="text-center text-5xl my-5 text-primary">
 					Create a Product
 				</h1>
 				{/* name */}
-				<div className="w-3/4 mx-auto">
+				<div className="sm:w-3/4 w-full mx-auto">
 					<input
 						type="text"
 						placeholder="product name"
@@ -106,7 +106,7 @@ const AddProduct = () => {
 				</div>
 				{/* Company name */}
 
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<select
 						{...register("category", {
 							required: "Product category is required",
@@ -128,7 +128,7 @@ const AddProduct = () => {
 					)}
 				</div>
 				{/* price */}
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<input
 						type="number"
 						placeholder="original price"
@@ -142,7 +142,7 @@ const AddProduct = () => {
 					)}
 				</div>
 				{/* product condition */}
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<select
 						{...register("condition", {
 							required: "Product condition is required",
@@ -163,7 +163,7 @@ const AddProduct = () => {
 					)}
 				</div>
 				{/* mobile number */}
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<input
 						type="text"
 						placeholder="phone number"
@@ -179,7 +179,7 @@ const AddProduct = () => {
 					)}
 				</div>
 				{/* location */}
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<input
 						type="text"
 						placeholder="location"
@@ -195,7 +195,7 @@ const AddProduct = () => {
 					)}
 				</div>
 				{/* reseal price */}
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<input
 						type="number"
 						placeholder="reseal price"
@@ -212,7 +212,7 @@ const AddProduct = () => {
 				</div>
 
 				{/* purchase date*/}
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<label
 						htmlFor=""
 						className="text-sm py-3 block text-primary font-semibold"
@@ -233,7 +233,7 @@ const AddProduct = () => {
 					)}
 				</div>
 				{/* image */}
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<label
 						htmlFor=""
 						className="text-sm py-3 block text-primary font-semibold"
@@ -254,7 +254,7 @@ const AddProduct = () => {
 					)}
 				</div>
 				{/* description */}
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<textarea
 						className="textarea textarea-bordered focus:outline-none hover:border-gray-500 transition-all  hover:outline-none w-full"
 						placeholder="product description"
@@ -268,7 +268,7 @@ const AddProduct = () => {
 						</span>
 					)}
 				</div>
-				<div className="text-center mt-5 w-3/4 mx-auto">
+				<div className="text-center mt-5 sm:w-3/4 w-full mx-auto">
 					<button className="btn btn-primary block w-full" type="submit">
 						{" "}
 						AddProduct{" "}
