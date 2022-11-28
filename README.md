@@ -1,12 +1,12 @@
-# KitchenFood Website
-Live website link: [https://kitchen-food-4a61d.web.app/](https://kitchen-food-4a61d.web.app/)
+# ResealPhone Website
+Live website link: [https://reseal-phones.web.app/](https://reseal-phones.web.app/)
 
 # Overview
-* this website is a food selling based website where you can buy bengali foods  and also abroad foods.
-* It has lots of food which made from home such as Kacchi biryani, Chicken Kabab, khir,dodhi etc.
-* You also can obtain knowledge  by reading the blog of this website
-* You can review our services as you want and also add services.
-* You can also learn cooking from this website.
+* this website is a used phone-selling based website where you can buy used phone  and also sell your used phone.
+* It has three types of users: admin, seller, and buyer. 
+* Admin can manage both buyer and seller and can delete.He/She can verify the seller. 
+* Seller can sell his/her used phoned.She/He can add product (phone).The seller can advertise the product of his/her. 
+* Buyers can buy the product after booking the product.She/He can contact the seller to buy the product.
 
 # Technologies Usage
 * React
@@ -15,8 +15,13 @@ Live website link: [https://kitchen-food-4a61d.web.app/](https://kitchen-food-4a
 * material-tailwind
 * firebase
 * Mongodb
-* react-photo-view library
-* react-toastify library
+* Stripe.js
+* react-query package
+* daisyui
+* react-hot-toast
+* react-icons
+* react-loader-spinner
+* react-router-dom
 
 ## Available Scripts
 
