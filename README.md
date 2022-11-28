@@ -23,6 +23,9 @@ Live website link: [https://reseal-phones.web.app/](https://reseal-phones.web.ap
 * react-loader-spinner
 * react-router-dom
 
+adminEmail: anis@gmail.com
+adminPassword: anismolla
+
 ## Available Scripts
 
 In the project directory, you can run:
