@@ -21,6 +21,7 @@ import axios from "axios";
 import ReportedItems from "../../pages/DashBoard/ReportedItems/ReportedItems";
 import Payment from "../../pages/DashBoard/Payment/Payment";
 import MyWishList from "../../pages/DashBoard/MyWishList/MyWishList";
+import Blog from "../../pages/Blog/Blog";
 
 const router = createBrowserRouter([
 	{
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
 				element: <CategoryProduct></CategoryProduct>,
 				loader: ({ params }) =>
 					axios.get(`http://localhost:5000/products/${params.category}`),
+			},
+			{
+				path: "/blog",
+				element: <Blog></Blog>,
 			},
 		],
 	},
