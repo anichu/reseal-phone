@@ -9,7 +9,7 @@ const HomeCarousel = () => {
 			<div className="carousel w-full">
 				<div id="slide1" className="carousel-item max-h-[80vh] relative w-full">
 					<img src={sl2} alt="" className="w-full" />
-					<div className="absolute course   md:top-[30%] sm:top-[10%] top-[20%] left-[50%] translate-x-[-50%] ">
+					<div className="absolute course   md:top-[30%] sm:top-[10%] top-[30%] left-[50%] translate-x-[-50%] ">
 						<h1 className="text-center course-title  w-full font-semibold sm:text-4xl text-2xl text-white">
 							WelCome to <span className="text-indigo-600">Reseal</span> phone{" "}
 							<br className="carousel-title-br" /> website.
@@ -31,7 +31,7 @@ const HomeCarousel = () => {
 				</div>
 				<div id="slide2" className="carousel-item h-[80vh] relative w-full">
 					<img src={sl1} alt="" className="w-full" />
-					<div className="absolute course  md:top-[30%] sm:top-[10%] top-[20%] left-[50%] translate-x-[-50%] ">
+					<div className="absolute course  md:top-[30%] sm:top-[10%] top-[30%] left-[50%] translate-x-[-50%] ">
 						<h1 className="text-center w-full course-title font-semibold sm:text-4xl text-2xl text-white">
 							WelCome to <span className="text-indigo-600">Reseal</span> phone{" "}
 							<br className="carousel-title-br" /> website.
@@ -54,7 +54,7 @@ const HomeCarousel = () => {
 				<div id="slide3" className="carousel-item h-[80vh] relative w-full">
 					<img src={sl3} alt="" className="w-full" />
 
-					<div className="absolute course md:top-[30%] sm:top-[10%] top-[20%]  left-[50%] translate-x-[-50%] ">
+					<div className="absolute course md:top-[30%] sm:top-[10%] top-[30%]  left-[50%] translate-x-[-50%] ">
 						<h1 className="text-center course-title w-full font-semibold sm:text-4xl text-2xl text-white">
 							Good to <span className="text-indigo-600">See</span> you{" "}
 							<br className="carousel-title-br" /> friend.
