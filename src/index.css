@@ -37,7 +37,9 @@ code {
 .overlay-bg {
 	background-color: rgba(0, 0, 0, 0.4);
 }
-
+.__PrivateStripeElement {
+	overflow: scroll !important;
+}
 @media only screen and (max-width: 860px) {
 	.carousel-title-br {
 		display: none;
@@ -46,6 +48,9 @@ code {
 @media only screen and (max-width: 500px) {
 	.profile-name {
 		display: none;
+	}
+	.InputElement {
+		display: block !important;
 	}
 }
 @media only screen and (max-width: 420px) {

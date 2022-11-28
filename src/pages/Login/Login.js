@@ -64,7 +64,7 @@ const Login = () => {
 						console.log(data);
 						if (data.acknowledged) {
 							setLoginEmail(user.email);
-							toast.success("user created");
+							toast.success("user login");
 							setError("");
 						}
 					})
@@ -79,15 +79,15 @@ const Login = () => {
 	};
 	// console.log(errors);
 	return (
-		<div>
+		<div className="my-10">
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="w-[50%] mx-auto border shadow-2xl rounded-2xl p-5 mt-5"
+				className="md:w-[50%] sm:w-[80%] w-[95%] mx-auto border shadow-2xl rounded-2xl p-5 mt-5"
 			>
 				{error && <Alert message={error}></Alert>}
 
 				<h1 className="text-center text-5xl my-5 text-primary">Login</h1>
-				<div className="w-3/4 mx-auto">
+				<div className="sm:w-3/4 w-full mx-auto">
 					<input
 						type="email"
 						placeholder="your email"
@@ -100,7 +100,7 @@ const Login = () => {
 						</span>
 					)}
 				</div>
-				<div className="w-3/4 mx-auto mt-5">
+				<div className="sm:w-3/4 w-full mx-auto mt-5">
 					<input
 						type="password"
 						placeholder="your password"
@@ -119,20 +119,20 @@ const Login = () => {
 						</span>
 					)}
 				</div>
-				<div className="text-center mt-5 w-3/4 mx-auto">
+				<div className="text-center mt-5 sm:w-3/4 w-full mx-auto">
 					<button className="btn btn-primary block w-full" type="submit">
 						{" "}
 						Login{" "}
 					</button>
 				</div>
 
-				<div className="flex items-center mt-2 w-3/4 mx-auto">
+				<div className="flex items-center mt-2 sm:w-3/4 w-full mx-auto">
 					<p className="w-full h-[1px] bg-gray-400"></p>
 					<p className="uppercase mx-2">or</p>
 					<p className="w-full h-[1px] bg-gray-400"></p>
 				</div>
 
-				<div className="text-center mt-3 w-3/4 mx-auto mb-3">
+				<div className="text-center mt-3 sm:w-3/4 w-full mx-auto mb-3">
 					<button
 						type="button"
 						onClick={googleSignIn}
@@ -141,7 +141,7 @@ const Login = () => {
 						login with google
 					</button>
 				</div>
-				<p className="mt-5 text-xl mx-auto w-3/4 capitalize font-semibold text-left">
+				<p className="mt-5 text-xl mx-auto sm:w-3/4 w-full capitalize font-semibold text-left">
 					New to Resale phone?
 					<Link
 						to="/signup"

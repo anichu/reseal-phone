@@ -23,7 +23,7 @@ const Payment = () => {
 				payment for{" "}
 				<span className="text-primary font-semibold">{data?.productname}</span>{" "}
 			</h1>
-			<h4 className="text-center text-xl">please,pay ${data?.price}</h4>
+			<h4 className="text-center text-xl">Please,pay ${data?.price} </h4>
 			<div className="w-96 my-5 mx-auto">
 				<Elements stripe={stripePromise}>
 					<CheckoutForm booking={data} />

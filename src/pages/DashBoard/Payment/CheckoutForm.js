@@ -98,8 +98,9 @@ const CheckoutForm = ({ booking }) => {
 	};
 	return (
 		<>
-			<form onSubmit={handleSubmit}>
+			<form className="" onSubmit={handleSubmit}>
 				<CardElement
+					className="min-w-[400px] overflow-scroll"
 					options={{
 						style: {
 							base: {
