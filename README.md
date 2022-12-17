@@ -1,4 +1,5 @@
-# ResealPhone Website
+# ResealPhone Website![Screenshot_20221218_001002](https://user-images.githubusercontent.com/41534160/208255586-318aba42-dd17-4cdf-8cf4-586da2bd435d.png)
+
 Live website link: [https://reseal-phones.web.app/](https://reseal-phones.web.app/)
 
 # Overview
